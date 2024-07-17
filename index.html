@@ -1,7 +1,5 @@
 <script>
-    
-    playGame();
-
+    //get choices
     function getComputerChoice() {
         let choice = Math.floor(Math.random()) * 3;
         return choice > 2 ? "Rock" : choice <= 1 && choice > 0 ? "Paper" : "Scissors";
@@ -22,6 +20,7 @@
      return choice;
     }
 
+    //game logic
     function playGame() {
         let humanScore = 0;
         let computerScore = 0;
@@ -52,10 +51,14 @@
         }
         else if (humanScore > computerScore) {
             console.log(`You got ${humanScore} points. The computer got ${computerScore} points. You win!`)
-        } else {
+        } 
+        else {
             console.log(`You got ${humanScore} points. The computer got ${computerScore} points. You lose.`)   
-        }
+    }
 }
+
+playGame();
+
 </script>
    
    
