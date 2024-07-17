@@ -1,0 +1,61 @@
+<script>
+    
+    playGame();
+
+    function getComputerChoice() {
+        let choice = Math.floor(Math.random()) * 3;
+        return choice > 2 ? "Rock" : choice <= 1 && choice > 0 ? "Paper" : "Scissors";
+    }
+
+    function getHumanChoice() {
+        let validInput = false;
+        let choice = prompt("Make your choice...");
+    
+        while (!validInput) {
+            if (choice.toLowerCase() === "rock" || choice.toLowerCase() === "paper" || choice.toLowerCase() === "scissors") {
+                validInput = true;
+            } 
+            else {
+                choice = prompt("Please enter rock, paper or scissors");
+            }
+        }
+     return choice;
+    }
+
+    function playGame() {
+        let humanScore = 0;
+        let computerScore = 0;
+    
+        let round = (humanChoice, computerChoice) => {
+            if (humanChoice.toLowerCase() == computerChoice.toLowerCase()) {
+                return "It's a tie!";
+            } 
+            else if (humanChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "scissors" || humanChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "rock" || humanChoice.toLowerCase() === "scissors" && computerChoice === "paper") {
+                humanScore++;
+                return "You win!"
+            } 
+            else {
+                computerScore++;
+                return "You lose!";
+            }
+        }
+
+        for (let i = 0; i < 5; i++) {
+            let humanChoice = getHumanChoice();
+            let computerChoice = getComputerChoice();
+        
+            console.log(round(humanChoice, computerChoice));
+        }
+    
+        if (humanScore == computerScore) {
+            console.log(`You got ${humanScore} points. The computer got ${computerScore} points. It's a tie!`)
+        }
+        else if (humanScore > computerScore) {
+            console.log(`You got ${humanScore} points. The computer got ${computerScore} points. You win!`)
+        } else {
+            console.log(`You got ${humanScore} points. The computer got ${computerScore} points. You lose.`)   
+        }
+}
+</script>
+   
+   
